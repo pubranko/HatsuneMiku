@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> 覧古考新</title>
+    {# リンクはこうなる href="/static/polls/style.css"#}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'saikutu/style.css' %}" />
+
+    <script src="{% static 'saikutu/js/form_controller.js' %}"></script>
+
+</head>
+<body>
+    {% csrf_token %}
+    <p>覧古考新</p>

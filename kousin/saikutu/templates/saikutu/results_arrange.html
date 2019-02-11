@@ -1,0 +1,32 @@
+<h4 >採掘結果</h4>
+<p>{{results.results_count}} 件該当</p>
+
+<input name="sch_query_save" hidden="ture" value="{{sch_query_save}}">
+<input name="page_max_lines_save" hidden="ture" value="{{page_info.page_max_lines_save}}">
+
+<a>ページ  {{page_info.page_num}} /{{page_info.page_max}}<a>
+<br>
+{% for page_controll in page_controll_list %}
+    <input type="button" value="{{page_controll.page_value}}" onclick="f_page_move(document,{{page_controll.page_num}})">
+{% endfor %}
+<br><br>
+
+<table>
+    <tr>
+        <th colspan="2">フィールド名</th>
+        <th colspan="3">フィールドの内容</th>
+    </tr>
+    {% for result in results.set_results %}
+        <tr><td colspan="2">件名</td><td colspan="3"><a>{{result.result_title}}</a></td></tr>
+        <tr><td>&nbsp;&nbsp;</td><td>本文（一部）</td><td colspan="3"><a>{{result.result_article}}</a></td></tr>
+        <tr><td>&nbsp;&nbsp;</td><td>URL</td><td colspan="3"><a href={{result.result_url}}>{{result.result_url}}</a></td></tr>
+        <tr><td>&nbsp;&nbsp;</td><td>公開日</td><td><a>{{result.result_publish_date}}</a></td><td>発行者</td><td><a>{{result.result_issuer}}</a></td></tr>
+    {% endfor %}
+</table>
+
+<br>
+<a>ページ  {{page_info.page_num}} /{{page_info.page_max}}<a>
+<br>
+{% for page_controll in page_controll_list %}
+    <input type="button" value="{{page_controll.page_value}}" onclick="f_page_move(document,{{page_controll.page_num}})">
+{% endfor %}
