@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    koushin:
+        image: koushin:v5
+        container_name: koushin_v5
+        ports:        
+            - "80:80"
+        restart: always            
+        environment:
+            - SOLR_URL=http://xxxxxxxx.japaneast.azurecontainer.io:8983/solr/ 
+            - SOLR_CORE=xxxxxx/ 
+            - SOLR_READ_USER=xxxxxxxxxx 
+            - SOLR_READ_PASS=xxxxxxxxxxxxxxxxxxxx

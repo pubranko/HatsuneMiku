@@ -1,0 +1,34 @@
+{#共通のヘッダー#}
+{% include "saikutu/header.html" %}
+
+{% load static %}
+{#<img src="{% static 'saikutu/images/aaa.gif' %}" alt="画像を表示">#}
+
+<h4>保管庫</h4>
+<p name="hokanko"></p>
+{% include "saikutu/results_arrange.html" %}
+
+<h1>以下、一時保存</h1>
+{% comment "" %}
+<h4 >採掘結果</h4>
+<p>{{results.results_count}} 件該当</p>
+<table>
+    <tr>
+        <th colspan="2">フィールド名</th>
+        <th>フィールドの内容</th>
+    </tr>
+    {% for result in results.set_results %}
+        
+        <tr><td colspan="2">件名</td><td><a>{{result.result_title}}</a></td></tr>
+        <tr><td>&nbsp;&nbsp;</td><td>発行者</td><td><a>{{result.result_issuer}}</a></td></tr>
+        <tr><td>&nbsp;&nbsp;</td><td>公開日</td><td><a>{{result.result_publish_date}}</a></td></tr>
+        <tr><td>&nbsp;&nbsp;</td><td>本文（一部）</td><td><a>{{result.result_article}}</a></td></tr>
+        <tr><td>&nbsp;&nbsp;</td><td>URL</td><td><a href={{result.result_url}}>{{result.result_url}}</a></td></tr>
+        
+    {% endfor %}
+
+</table>
+{% endcomment %}
+
+{#共通のフッター#}
+{% include "saikutu/footer.html" %}
