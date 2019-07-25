@@ -1,0 +1,36 @@
+#!/bin/bash
+# configure Solr to run on the local interface, and start it running in the background
+echo "################"
+echo "################"
+echo "################"
+echo "start-local-solr 実行開始"
+echo "################"
+echo "################"
+echo "################"
+
+set -euo pipefail
+
+if [[ "${VERBOSE:-}" = "yes" ]]; then
+    set -x
+fi
+
+echo "Running solr in the background. Logs are in /var/solr/logs"
+SOLR_OPTS="-Djetty.host=${SOLR_LOCAL_HOST:-localhost}" solr start
+max_try=${MAX_TRY:-12}
+wait_seconds=${WAIT_SECONDS:-5}
+if ! /opt/docker-solr/scripts/wait-for-solr.sh --max-attempts "$max_try" --wait-seconds "$wait_seconds"; then
+    echo "Could not start Solr."
+    if [ -f "/var/solr/logs/solr.log" ]; then
+        echo "Here is the log:"
+        cat "/var/solr/logs/solr.log"
+    fi
+    exit 1
+fi
+
+echo "################"
+echo "################"
+echo "################"
+echo "start-local-solr 実行終了"
+echo "################"
+echo "################"
+echo "################"

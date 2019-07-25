@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+# Run the initdb, then start solr in the foreground
+echo "################"
+echo "################"
+echo "################"
+echo "solr-foreground 実行開始"
+echo "################"
+echo "################"
+echo "################"
+
+set -e
+
+if [[ "$VERBOSE" = "yes" ]]; then
+    set -x
+fi
+
+. /opt/docker-solr/scripts/run-initdb
+
+echo "Starting Solr $SOLR_VERSION"
+
+exec solr -f "$@"
+
+echo "################"
+echo "################"
+echo "################"
+echo "solr-foreground 実行終了"
+echo "################"
+echo "################"
+echo "################"

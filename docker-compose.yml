@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+    koushin:
+        image: koushin:v4
+        container_name: koushin_v4
+        ports:
+            - "80:80"
+        networks:
+            - rankokoushin-network
+        depends_on:     #依存関係：depends_onに指定したコンテナのあとに起動する。
+            - solr8
+
+    solr8:
+        image: solr8:v4
+        container_name: solr8_v4
+        ports:
+            - "8983:8983"
+        networks:
+            - rankokoushin-network
+        #volumes:
+        #    - ./02_solr/solrdata:/var/solr
+        command: solr-create -c mycore       
+
+# volumes:
+#    db-data:
+
+networks:
+    rankokoushin-network:

@@ -1,0 +1,26 @@
+#!/bin/bash
+# stop the background Solr, and restore the normal configuration
+echo "################"
+echo "################"
+echo "################"
+echo "stop-local-solr 実行開始"
+echo "################"
+echo "################"
+echo "################"
+
+set -e
+
+if [[ "$VERBOSE" = "yes" ]]; then
+    set -x
+fi
+
+echo "Shutting down the background Solr"
+solr stop
+
+echo "################"
+echo "################"
+echo "################"
+echo "stop-local-solr 実行終了"
+echo "################"
+echo "################"
+echo "################"

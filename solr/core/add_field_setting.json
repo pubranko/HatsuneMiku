@@ -1,0 +1,9 @@
+{
+    "add-field" : {"name":"url", "type":"string", "indexed":"true", "required":"true", "stored":"true"},
+    "add-field" : {"name":"title", "type":"text_ja", "indexed":"true", "stored":"true"},
+    "add-field" : {"name":"article", "type":"text_ja", "indexed":"true", "stored":"true"},
+    "add-field" : {"name":"response_time", "type":"pdate", "indexed":"true", "required":"true", "stored":"false"},
+    "add-field" : {"name":"issuer", "type":"text_ja", "multiValued":"true", "indexed":"true", "stored":"true"},
+    "add-field" : {"name":"publish_date", "type":"pdate", "indexed":"true", "required":"true", "stored":"false"},
+    "add-field" : {"name":"update_count", "type":"pint", "indexed":"true", "required":"true", "stored":"true"}
+}
